@@ -3,23 +3,24 @@
 <StackLayout class="p-20">   
   <Label text="Test23" class="h1 text-center c-white"></Label>
   <Image src="~/assets/images/nx-nativescript.png" class="h-center m-t-20" width="300"></Image>
-  <TextField
-  >
-  </TextField>
-  <TextView
-  >
-  </TextView>  
   <PickerField 
-    hint="Click here" 
+    hint="Choose options..." 
     class="picker-field" 
     padding="10" 
-    textField="name" 
+    textField="comment" 
+    valueField="id"
     [pickerTitle]="'Select item from list'" 
-    iOSCloseButtonIcon="14" iOSCloseButtonPosition="left" androidCloseButtonPosition="navigationButton" androidCloseButtonIcon="ic_menu_back" [items]="[{name:'tests'}]">
+    iOSCloseButtonIcon="14" 
+    iOSCloseButtonPosition="left" 
+    androidCloseButtonPosition="navigationButton" androidCloseButtonIcon="ic_menu_back" 
+    [items]="items"
+    (itemLoading)="itemLoading($event)">
     <ng-template let-item="item">
-      <GridLayout columns="auto, *" rows="auto, *">
-        <Label text="Static text:" col="0" class="item-template-top-label"></Label>
-        <Label [text]="item.name" col="0" row="1" class="item-template-label red-label" marginBottom="20"></Label>
+      <GridLayout rows="auto,auto" columns="90,*" class="picker-list">
+        <Label text="Comment:" col="0" class="item-template-top-label text-right"></Label>
+        <Label [text]="item?.comment" col="1" class="item-template-label red-label m-l-5 font-weight-bold"></Label>
+        <Label row="1" text="Author:" col="0" class="item-template-top-label text-right font-italic"></Label>
+        <Label row="1" [text]="item?.author" col="1" class="item-template-label red-label m-l-5 font-italic"></Label>
       </GridLayout>
     </ng-template>
   </PickerField>      

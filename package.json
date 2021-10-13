@@ -2,12 +2,17 @@
   "name": "owen",
   "version": "0.0.0",
   "license": "MIT",
+  "workspaces": [
+    "apps/nativescript-demo-angular"
+  ],
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "clean": "npx rimraf hooks node_modules package-lock.json yarn.lock && ns package-manager set yarn && yarn",
+    "clean.all": "yarn clean && npx nx run nativescript-demo-angular:clean"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +24,6 @@
     "@angular/platform-browser": "^12.0.0",
     "@angular/platform-browser-dynamic": "^12.0.0",
     "@angular/router": "^12.0.0",
-    "@nativescript/nx": "^2.0.5",
-    "@nrwl/angular": "12.9.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "^0.11.1",
@@ -28,7 +31,7 @@
     "nativescript-theme-core": "~1.0.4",
     "@nativescript/angular": "^12.0.0",
     "@nativescript/datetimepicker": "^2.1.6",
-    "@nativescript/picker": "^4.0.0",
+    "@nativescript/picker": "^4.0.1",
     "@nativescript/theme": "^3.0.1",
     "nativescript-ui-listview": "^10.0.0"
   },
@@ -40,6 +43,11 @@
     "@angular/cli": "~12.2.0",
     "@angular/compiler-cli": "^12.0.0",
     "@angular/language-service": "^12.2.0",
+    "@nativescript/nx": "^2.0.5",
+    "@nativescript/webpack": "~5.0.0",
+    "@nativescript/types": "~8.1.0",
+    "@ngtools/webpack": "^12.0.0",
+    "@nrwl/angular": "12.9.0",
     "@nrwl/cli": "12.9.0",
     "@nrwl/cypress": "12.9.0",
     "@nrwl/eslint-plugin-nx": "12.9.0",
@@ -58,12 +66,9 @@
     "jest": "27.0.3",
     "jest-preset-angular": "9.0.7",
     "prettier": "^2.3.1",
-    "ts-jest": "27.0.3",
-    "typescript": "~4.3.5",
     "sass": "^1.32.0",
-    "@nativescript/webpack": "5.0.0",
-    "@nativescript/types": "~8.0.0",
-    "@ngtools/webpack": "^12.0.0"
+    "ts-jest": "27.0.3",
+    "typescript": "~4.3.5"
   },
   "nativescript-nx": {
     "prefix": "",
